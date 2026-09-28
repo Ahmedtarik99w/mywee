@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هدية ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+    }
+
+    .box {
+      width: min(90%, 600px);
+      padding: 35px 25px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    input {
+      width: 90%;
+      padding: 15px;
+      border: none;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 18px;
+      outline: none;
+      margin: 15px 0;
+    }
+
+    button {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 20px;
+      background: white;
+      color: #e84367;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #gift {
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 25px;
+      animation: float 6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .languages {
+      margin-top: 25px;
+      line-height: 2;
+      font-size: 18px;
+    }
+
+    .ring {
+      margin: 30px auto 15px;
+      width: 110px;
+      height: 110px;
+      border: 12px solid gold;
+      border-radius: 50%;
+      position: relative;
+      cursor: pointer;
+      transition: 0.6s;
+    }
+
+    .ring::after {
+      content: "💎";
+      position: absolute;
+      top: -38px;
+      left: 30px;
+      font-size: 45px;
+    }
+
+    .ring.open {
+      transform: rotate(180deg) scale(1.1);
+    }
+
+    #ringText {
+      display: none;
+      font-size: 30px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .error {
+      color: #ffe1e1;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- شاشة الباسورد -->
+  <section class="screen" id="passwordScreen">
+    <div class="box">
+      <h1>❤️ عندك مفاجأة ❤️</h1>
+
+      <p>
+        قبل ما تدخلي لازم تعرفي حاجة واحدة...
+        <br>
+        المفاجأة دي معمولة مخصوص ليكي 💕
+      </p>
+
+      <input
+        type="password"
+        id="password"
+        placeholder="اكتبي الباسورد"
+      >
+
+      <br>
+
+      <button onclick="checkPassword()">دخول ❤️</button>
+
+      <p class="error" id="error">
+        الباسورد غلط 😭
+      </p>
+    </div>
+  </section>
+
+
+  <!-- الهدية -->
+  <section class="screen" id="gift">
+    <div class="box">
+
+      <h1>بسم الله الرحمن الرحيم ❤️</h1>
+
+      <p>
+        أول يوم بدأت فيه الحكاية...
+        <br>
+        <strong>21 - 11 - 2024</strong>
+      </p>
+
+      <p>
+        ويوم 24 - 2 - 2025
+        <br>
+        كان يوم مميز جدًا ❤️
+      </p>
+
+      <hr>
+
+      <h1>بحبك ❤️</h1>
+
+      <div class="languages">
+        أحبك ❤️ — العربية<br>
+        I love you ❤️ — English<br>
+        Je t'aime ❤️ — Français<br>
+        Te amo ❤️ — Español<br>
+        Ti amo ❤️ — Italiano<br>
+        Ich liebe dich ❤️ — Deutsch<br>
+        愛してる ❤️ — 日本語<br>
+        사랑해 ❤️ — 한국어<br>
+        Я тебя люблю ❤️ — Русский<br>
+        我爱你 ❤️ — 中文<br>
+        Eu te amo ❤️ — Português
+      </div>
+
+      <hr>
+
+      <h2>أنا آسف ❤️</h2>
+
+      <p>
+        حقك عليا...
+        <br>
+        ونفسي تنسي كل الغلطات اللي فاتت،
+        <br>
+        ونبدأ صفحة جديدة سوا ❤️
+      </p>
+
+      <h2>💗💗💗</h2>
+
+      <p>اضغطي على الخاتم 💍</p>
+
+      <div class="ring" id="ring" onclick="openRing()"></div>
+
+      <div id="ringText">
+        أنا بعشقك ❤️
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+
+    function checkPassword() {
+
+      const password = document.getElementById("password").value;
+
+      if (password === "01082010") {
+
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("gift").style.display = "flex";
+
+        createHearts();
+
+      } else {
+
+        document.getElementById("error").style.display = "block";
+
+      }
+    }
+
+
+    function createHearts() {
+
+      setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration =
+          (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 8000);
+
+      }, 300);
+
+    }
+
+
+    function openRing() {
+
+      const ring = document.getElementById("ring");
+      const text = document.getElementById("ringText");
+
+      ring.classList.toggle("open");
+
+      if (text.style.display === "block") {
+        text.style.display = "none";
+      } else {
+        text.style.display = "block";
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
